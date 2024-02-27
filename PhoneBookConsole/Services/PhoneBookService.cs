@@ -1,9 +1,6 @@
 ﻿using PhoneBookConsole.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhoneBookConsole.Services
 {
@@ -18,24 +15,12 @@ namespace PhoneBookConsole.Services
         }
         private void DisplayContactDetails(Contact[] contacts)
         {
-            foreach (var contact in contacts)
+            for (int iteration = 0; iteration < contactCount; iteration++)
             {
-                DisplayContactDetails(contact);
+                DisplayContactDetails(contacts[iteration]);
             }
         }
-        public void AddContact(Contact contact)
-        {
-            if (contactCount < MaxContacts)
-            {
-                contacts[contactCount] = new Contact(contact.Name, contact.Number);
-                contactCount++;
-                Console.WriteLine("Contact added successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Phonebook is full. Cannot add more contacts.");
-            }
-        }
+        
         public void DisplayContact(int Id)
         {
             var contact = contacts[Id++];
@@ -66,6 +51,52 @@ namespace PhoneBookConsole.Services
                 Console.WriteLine("No matching contacts found.");
             }
         }
+
+        public void AddContact(Contact contact)
+        {
+            if (contactCount < MaxContacts)
+            {
+                contacts[contactCount] = new Contact(contact.Name, contact.Number);
+                contactCount++;
+                Console.WriteLine("Contact added successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Phonebook is full. Cannot add more contacts.");
+            }
+        }
+
+        public void DeleteContact(int id)
+        {
+            if (id > 0 && id <= contactCount)
+            {
+                for (int i = id - 1; i < contactCount - 1; i++)
+                {
+                    contacts[i] = contacts[i + 1];
+                }
+                contactCount--;
+                Console.WriteLine("Contact deleted successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid contact ID.");
+            }
+        }
+
+        public void UpdateContact(int id, Contact contact)
+        {
+            if (id > 0 && id <= contactCount)
+            {
+                contacts[id - 1].Name = contact.Name;
+                contacts[id - 1].Number = contact.Number;
+                Console.WriteLine("Contact updated successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid contact ID.");
+            }
+        }
+
     }
 }
 
