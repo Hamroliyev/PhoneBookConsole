@@ -1,12 +1,13 @@
-﻿using System;
+﻿using PhoneBookConsole.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhoneBookConsole
+namespace PhoneBookConsole.Services
 {
-    class PhoneBook
+    class PhoneBookService
     {
         private List<Contact> _contacts { get; set; } = new List<Contact>();
         private void DisplayContactDetails(Contact contact)
@@ -27,7 +28,7 @@ namespace PhoneBookConsole
         public void DisplayContact(string number)
         {
             var contact = _contacts.FirstOrDefault(c => c.Number == number);
-            if(contact==null)
+            if (contact == null)
             {
                 Console.WriteLine("Contact not found");
             }
