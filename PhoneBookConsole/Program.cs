@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhoneBookConsole.Services;
+using System;
 
 namespace PhoneBookConsole
 {
@@ -15,7 +16,7 @@ namespace PhoneBookConsole
             Console.WriteLine("Press 'x' to exit");
             var userInput = Console.ReadLine();
 
-            var phoneBook = new PhoneBook();
+            PhoneBookService phoneBook = new PhoneBookService();
             while (true)
             {
                 switch (userInput)
