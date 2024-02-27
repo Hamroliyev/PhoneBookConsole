@@ -1,4 +1,5 @@
-﻿using PhoneBookConsole.Services;
+﻿using PhoneBookConsole.Models;
+using PhoneBookConsole.Services;
 using System;
 
 namespace PhoneBookConsole
