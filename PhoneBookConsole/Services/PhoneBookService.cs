@@ -1,6 +1,5 @@
 ﻿using PhoneBookConsole.Models;
 using System;
-using System.Linq;
 
 namespace PhoneBookConsole.Services
 {

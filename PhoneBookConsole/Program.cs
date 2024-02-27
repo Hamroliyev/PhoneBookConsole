@@ -8,7 +8,6 @@ namespace PhoneBookConsole
     {
         static void Main(string[] args)
         {
-            Console.Clear();
             Console.WriteLine("\t --- Hello from the PhoneBook app --- ");
             Console.WriteLine("\t : Select Operation : ");
             Console.WriteLine("1 - Add contact");
