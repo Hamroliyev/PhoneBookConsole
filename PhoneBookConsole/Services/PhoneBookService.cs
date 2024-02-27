@@ -39,7 +39,7 @@ namespace PhoneBookConsole.Services
         }
         public void DisplayMatchingContacts(string searchPharse)
         {
-            var foundContacts = contacts.Where(c => c.Name.ToLower().Contains(searchPharse.ToLower())).ToArray();
+            Contact[] foundContacts = contacts.Where(c => c.Name.Contains(searchPharse)).ToArray();
 
             if (foundContacts.Length > 0)
             {
