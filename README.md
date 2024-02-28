@@ -1,6 +1,7 @@
 # PhoneBook App
 
-The PhoneBook app is a simple console-based application that allows users to manage a list of contacts. It provides basic functionalities for adding, searching, updating, and deleting contacts within a phone book.
+The PhoneBook app is a simple console-based application that allows users to manage a list of contacts. It provides basic functionalities for adding, searching, updating,
+and deleting contacts within a phone book.
 
 ## Features
 - Add Contact: Users can add a new contact with a name and phone number.
