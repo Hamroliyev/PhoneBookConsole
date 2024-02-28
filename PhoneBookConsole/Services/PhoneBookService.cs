@@ -20,7 +20,7 @@ namespace PhoneBookConsole.Services
             }
         }
         
-        public void DisplayContact(int Id)
+        public void DisplayContactById(int Id)
         {
             var contact = contacts[Id++];
             if (contact == null)
@@ -65,7 +65,7 @@ namespace PhoneBookConsole.Services
             }
         }
 
-        public void DeleteContact(int id)
+        public void DeleteContactById(int id)
         {
             if (id > 0 && id <= contactCount)
             {

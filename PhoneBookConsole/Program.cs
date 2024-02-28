@@ -39,7 +39,7 @@ namespace PhoneBookConsole
                         Console.Write("Contact id to search ");
                         string idInput = Console.ReadLine();
                         int id = Convert.ToInt32(idInput);
-                        phoneBook.DisplayContact(id);
+                        phoneBook.DisplayContactById(id);
                         break;
 
                     case "3":
@@ -68,7 +68,7 @@ namespace PhoneBookConsole
                         Console.Write("Enter the id you wanna delete : ");
                         string idDeletedInput = Console.ReadLine();
                         int idDeleted = Convert.ToInt32(idDeletedInput);
-                        phoneBook.DeleteContact(idDeleted);
+                        phoneBook.DeleteContactById(idDeleted);
                         break;
 
                     case "x":
