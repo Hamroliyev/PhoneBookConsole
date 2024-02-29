@@ -20,7 +20,10 @@ namespace PhoneBookConsole.Brokers
                 loggingBroker.LogError("This file path is null");
             }
 
-            throw new System.NotImplementedException();
+            using (FileStream fileStream = new FileStream(path,FileMode.OpenOrCreate))
+            {
+                fileStream.Flush();
+            }
         }
 
         public void InsertDataToFile(string data)
@@ -31,9 +34,12 @@ namespace PhoneBookConsole.Brokers
             }
             try
             {
-                using (StreamWriter streamWriter = new StreamWriter(path))
+                using (FileStream fileStream = new FileStream(path, FileMode.Append, FileAccess.Write))
                 {
-                    streamWriter.WriteLine(data);
+                    using (StreamWriter streamWriter = new StreamWriter(fileStream))
+                    {
+                        streamWriter.WriteLine(data);
+                    }
                 }
             }
             catch (ArgumentException argumentException)
@@ -61,7 +67,7 @@ namespace PhoneBookConsole.Brokers
             return lines;
         }
 
-        public bool FileExists()
+        private bool FileExists()
         {
             if (path is null)
             {
