@@ -19,27 +19,27 @@ namespace PhoneBookConsole
             Console.WriteLine("Press 'x' to exit");
             Console.Write("Enter your choice : ");
             string userInput = Console.ReadLine();
-            Console.WriteLine();
-
             PhoneBookService phoneBook = new PhoneBookService();
+
             while (true)
             {
                 switch (userInput)
                 {
                     case "1":
+                        Console.Write("Contact id : ");
+                        var id = Console.ReadLine();
                         Console.Write("Contact name : ");
                         var name = Console.ReadLine();
                         Console.Write("Contact number : ");
                         var number = Console.ReadLine();
-                        var newContact = new Contact(name, number);
+                        var newContact = new Contact() { Id = id, Name = name, Number = number};
                         phoneBook.AddContact(newContact);
                         break;
 
                     case "2":
                         Console.Write("Contact id to search ");
                         string idInput = Console.ReadLine();
-                        int id = Convert.ToInt32(idInput);
-                        phoneBook.DisplayContactById(id);
+                        phoneBook.DisplayContactById(idInput);
                         break;
 
                     case "3":
@@ -60,7 +60,7 @@ namespace PhoneBookConsole
                         var nameUpdated = Console.ReadLine();
                         Console.Write("Contact number : ");
                         var numberUpdated = Console.ReadLine();
-                        var contactUpdated = new Contact(nameUpdated, numberUpdated);
+                        var contactUpdated = new Contact() { Name = nameUpdated, Number = numberUpdated};
                         phoneBook.UpdateContact(idUpdated, contactUpdated);
                         break;
 
@@ -78,6 +78,7 @@ namespace PhoneBookConsole
                         Console.WriteLine("Select Valid operation");
                         break;
                 }
+
                 Console.WriteLine();
                 Console.WriteLine("\t : Select Operation : ");
                 userInput = Console.ReadLine();

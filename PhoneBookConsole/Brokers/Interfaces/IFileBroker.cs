@@ -7,6 +7,6 @@ namespace PhoneBookConsole.Brokers.Interfaces
     {
         void InsertDataToFile(string data);
         void DeleteDataFromFile();
-        void ReadDataFromFile();
+        string[] ReadDataFromFile();
     }
 }
