@@ -60,7 +60,7 @@ namespace PhoneBookConsole.Services
         
         public void DisplayContactById(string id)
         {
-            var contact = contacts;
+            var contact = Array.Find(contacts, c => c.Id == id);
 
             if (contact == null)
             {
@@ -79,6 +79,7 @@ namespace PhoneBookConsole.Services
 
         public void DisplayMatchingContacts(string searchPharse)
         {
+            ReadContactsFromFile();
             Contact[] foundContacts = Array.FindAll(contacts, c => c.Name.Contains(searchPharse));
 
             if (foundContacts.Length > 0)
@@ -104,6 +105,7 @@ namespace PhoneBookConsole.Services
             {
                 loggingBroker.LogInformation("Phonebook is full. Cannot add more contacts.");
             }
+            ReadContactsFromFile();
         }
 
         public void DeleteContactById(int id)
@@ -115,11 +117,11 @@ namespace PhoneBookConsole.Services
                     contacts[i] = contacts[i + 1];
                 }
                 contactCount--;
-                Console.WriteLine("Contact deleted successfully.");
+                loggingBroker.LogInformation("Contact deleted successfully.");
             }
             else
             {
-                Console.WriteLine("Invalid contact ID.");
+                loggingBroker.LogInformation("Invalid contact ID.");
             }
         }
 
@@ -129,11 +131,11 @@ namespace PhoneBookConsole.Services
             {
                 contacts[id - 1].Name = contact.Name;
                 contacts[id - 1].Number = contact.Number;
-                Console.WriteLine("Contact updated successfully.");
+                loggingBroker.LogInformation("Contact updated successfully.");
             }
             else
             {
-                Console.WriteLine("Invalid contact ID.");
+                loggingBroker.LogInformation("Invalid contact ID.");
             }
         }
     }
