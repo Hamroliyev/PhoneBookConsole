@@ -13,6 +13,7 @@ namespace PhoneBookConsole.Brokers
             loggingBroker = new LoggingBroker();
             path = @"C:\Users\ahmad\source\repos\PhoneBookConsole\PhoneBookConsole\Assets\CallSets.txt";
         }
+
         public void DeleteDataFromFile(int line)
         {
             if (path is null)

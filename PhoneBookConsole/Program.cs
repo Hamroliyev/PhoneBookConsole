@@ -11,7 +11,7 @@ namespace PhoneBookConsole
             Console.WriteLine("\t --- Hello from the PhoneBook app --- ");
             Console.WriteLine("\t : Select Operation : ");
             Console.WriteLine("1 - Add contact");
-            Console.WriteLine("2 - Display contact by number");
+            Console.WriteLine("2 - Display contact by id");
             Console.WriteLine("3 - View all contacts");
             Console.WriteLine("4 - Search for contacts for a given name");
             Console.WriteLine("5 - Update contact");
