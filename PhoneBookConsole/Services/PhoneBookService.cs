@@ -60,6 +60,7 @@ namespace PhoneBookConsole.Services
         
         public void DisplayContactById(string id)
         {
+            ReadContactsFromFile();
             var contact = Array.Find(contacts, c => c.Id == id);
 
             if (contact == null)

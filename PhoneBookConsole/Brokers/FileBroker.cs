@@ -13,16 +13,20 @@ namespace PhoneBookConsole.Brokers
             loggingBroker = new LoggingBroker();
             path = @"C:\Users\ahmad\source\repos\PhoneBookConsole\PhoneBookConsole\Assets\CallSets.txt";
         }
-        public void DeleteDataFromFile()
+        public void DeleteDataFromFile(int line)
         {
             if (path is null)
             {
                 loggingBroker.LogError("This file path is null");
             }
 
-            using (FileStream fileStream = new FileStream(path,FileMode.OpenOrCreate))
-            {
-                fileStream.Flush();
+            using (StreamWriter sw = new StreamWriter(path))
+            { 
+                while (true)
+                {
+                    if (line == 2)
+                        sw.WriteLine(line);
+                }
             }
         }
 
