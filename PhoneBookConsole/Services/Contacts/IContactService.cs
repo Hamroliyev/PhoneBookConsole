@@ -6,5 +6,7 @@ namespace PhoneBookConsole.Services.Contacts
     {
         Contact AddContact(Contact contact);
         void ShowContacts();
+        Contact UpdateContact(Contact contact);
+        bool DeleteContactById(int id);
     }
 }
