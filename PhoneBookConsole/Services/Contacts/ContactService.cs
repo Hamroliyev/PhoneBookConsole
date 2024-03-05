@@ -29,6 +29,8 @@ namespace PhoneBookConsole.Services.Contacts
             if (contacts.Length == 0)
             {
                 this.loggingBroker.LogError("Contacts is empty");
+
+                return;
             }
 
             foreach (Contact contact in contacts)
