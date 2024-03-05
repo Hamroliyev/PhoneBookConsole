@@ -46,6 +46,55 @@ namespace PhoneBookConsole.Brokers.Storages
             return contacts;
         }
 
+        public Contact UpdateContact(Contact contact)
+        {
+            string[] contactLines = File.ReadAllLines(FilePath);
+            int contactLength = contactLines.Length;
+            File.WriteAllText(FilePath, String.Empty);
+
+            for (int iterator = 0; iterator < contactLength; iterator++)
+            {
+                string contactLine = contactLines[iterator];
+                string[] contactProperties = contactLine.Split("*");
+
+                if (contactProperties[0] == contact.Id.ToString())
+                {
+                    File.AppendAllText(FilePath, $"{contact.Id}*{contact.Name}*{contact.Phone}\n");
+                }
+                else
+                {
+                    File.AppendAllText(FilePath, contactLine);
+                }
+            }
+
+            return contact;
+        }
+
+        public bool DeleteContactById(int id)
+        {
+            bool isDeleted = false;
+            string[] contactLines = File.ReadAllLines(FilePath);
+            int contactLength = contactLines.Length;
+            File.WriteAllText(FilePath, String.Empty);
+
+            for (int iterator = 0; iterator < contactLength; iterator++)
+            {
+                string contactLine = contactLines[iterator];
+                string[] contactProperties = contactLine.Split("*");
+
+                if (contactProperties[0] == id.ToString())
+                {
+                    isDeleted = true;
+                }
+                else
+                {
+                    File.AppendAllText(FilePath, contactLine);
+                }
+            }
+
+            return isDeleted;
+        }
+
         private void EnsureFileExists()
         {
             bool fileExists = File.Exists(FilePath);

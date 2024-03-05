@@ -6,5 +6,7 @@ namespace PhoneBookConsole.Brokers.Storages
     {
         Contact AddContact(Contact contact);
         Contact[] ReadAllContacts();
+        Contact UpdateContact(Contact contact);
+        bool DeleteContactById(int id);
     }
 }

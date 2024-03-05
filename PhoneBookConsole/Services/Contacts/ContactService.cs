@@ -41,6 +41,28 @@ namespace PhoneBookConsole.Services.Contacts
             this.loggingBroker.LogInformation("=== End of contacts ===");
         }
 
+        public Contact UpdateContact(Contact contact)
+        {
+            return contact is null
+                ? CreateAndLogInvalidContact()
+                : ValidateAndUpdateContact(contact);
+        }
+
+        public bool DeleteContactById(int id)
+        {
+            if (id is 0)
+            {
+                this.loggingBroker.LogError("Id is invalid.");
+
+                return false;
+            }
+            else
+            {
+                return this.storageBroker.DeleteContactById(id);
+            }
+
+        }
+
         private Contact CreateAndLogInvalidContact()
         {
             this.loggingBroker.LogError("Contact is invalid");
@@ -61,6 +83,22 @@ namespace PhoneBookConsole.Services.Contacts
             else
             {
                 return this.storageBroker.AddContact(contact);
+            }
+        }
+
+        private Contact ValidateAndUpdateContact(Contact contact)
+        {
+            if (contact.Id is 0
+                || String.IsNullOrWhiteSpace(contact.Name)
+                || String.IsNullOrWhiteSpace(contact.Phone))
+            {
+                this.loggingBroker.LogError("Contact details missing.");
+
+                return new Contact();
+            }
+            else
+            {
+                return this.storageBroker.UpdateContact(contact);
             }
         }
     }
