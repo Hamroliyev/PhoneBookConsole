@@ -11,7 +11,7 @@ namespace PhoneBookConsole
         {
             IContactService contactService = new ContactService();
 
-            contactService.ShowContacts();
+            contactService.AddContact(new Contact());
         }
     }
 }
