@@ -1,5 +1,6 @@
 ﻿using PhoneBookConsole.Models;
 using PhoneBookConsole.Services;
+using PhoneBookConsole.Services.Contacts;
 using System;
 
 namespace PhoneBookConsole
@@ -8,7 +9,9 @@ namespace PhoneBookConsole
     {
         static void Main(string[] args)
         {
-            
+            IContactService contactService = new ContactService();
+
+            contactService.ShowContacts();
         }
     }
 }
