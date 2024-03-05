@@ -37,6 +37,7 @@ namespace PhoneBookConsole.Services.Contacts
         private Contact CreateAndLogInvalidContact()
         {
             this.loggingBroker.LogError("Contact is invalid");
+
             return new Contact();
         }
 
@@ -47,6 +48,7 @@ namespace PhoneBookConsole.Services.Contacts
                 || String.IsNullOrWhiteSpace(contact.Phone))
             {
                 this.loggingBroker.LogError("Contact details missing.");
+
                 return new Contact();
             }
             else
