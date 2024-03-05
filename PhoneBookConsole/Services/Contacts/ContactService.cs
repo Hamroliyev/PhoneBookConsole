@@ -26,6 +26,13 @@ namespace PhoneBookConsole.Services.Contacts
         {
             Contact[] contacts = this.storageBroker.ReadAllContacts();
 
+            if (contacts.Length == 0)
+            {
+                this.loggingBroker.LogError("Contacts is empty");
+
+                return;
+            }
+
             foreach (Contact contact in contacts)
             {
                 this.loggingBroker.LogInformation($"{contact.Id}. {contact.Name} - {contact.Phone}");
